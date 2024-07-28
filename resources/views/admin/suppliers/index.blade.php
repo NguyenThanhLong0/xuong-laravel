@@ -35,26 +35,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach ($suppliers as $supplier)
+                                @foreach ($data as $item)
                                     <tr>
-                                        <td>{{ $supplier['id'] }}</td>
-                                        <td>{{ $supplier['name'] }}</td>
-                                        <td>{{ $supplier['address'] }}</td>
-                                        <td>{{ $supplier['phone'] }}</td>
-                                        <td>{{ $supplier['email'] }}</td>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->address }}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->email }}</td>
                                         <td>
-                                            <a href="{{ route("admin/suppliers/{$supplier['id']}/show") }}"
+                                            <a href="{{ route('admin.suppliers.show', $item->id) }}"
                                                 class="btn btn-info">Xem</a>
-                                            <a href="{{ route("admin/suppliers/{$supplier['id']}/edit") }}"
+                                            <a href="{{ route('admin.suppliers.edit', $item->id) }}"
                                                 class="btn btn-warning">Sửa</a>
-                                            <a href="{{ route("admin/suppliers/{$supplier['id']}/delete") }}"
+                                            <a href="{{ route('admin.suppliers.destroy', $item->id) }}"
                                                 onclick="return confirm('Chắc chắn xóa không?');"
                                                 class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
+
+                        <!-- Phân trang -->
+                        {{ $data->links() }}
                     </div>
                 </div>
             </div>

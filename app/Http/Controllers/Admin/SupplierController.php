@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class SupplierController extends Controller
 {
     const PARTH_VIEW = 'admin.suppliers.';
+    
     /**
      * Display a listing of the resource.
      */
@@ -32,6 +33,7 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        Supplier::query()->create($request->all());
         return redirect()->route('admin.suppliers.index');
     }
 
@@ -60,7 +62,10 @@ class SupplierController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $model = Supplier::query()->findOrFail($id);
+        $model->update($request->all());
+
+        return back();
     }
 
     /**
@@ -68,6 +73,10 @@ class SupplierController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $model = Supplier::query()->findOrFail($id);
+
+        $model->delete();
+
+        return back();
     }
 }

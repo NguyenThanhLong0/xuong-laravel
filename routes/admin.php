@@ -33,6 +33,6 @@ Route::prefix('admin')
                 Route::get('/show/{id}',         [SupplierController::class, 'show'])->name('show');
                 Route::get('{id}/edit',          [SupplierController::class, 'edit'])->name('edit');
                 Route::put('{id}/update',        [SupplierController::class, 'update'])->name('update');
-                Route::delete('{id}/destroy',    [SupplierController::class, 'destroy'])->name('destroy');
+                Route::get('{id}/destroy',    [SupplierController::class, 'destroy'])->name('destroy');
             });
     });

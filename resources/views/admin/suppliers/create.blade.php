@@ -5,8 +5,9 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.suppliers.store') }}" method="POST">
-        <a href="{{ route('admin.suppliers.store') }}" class="btn btn-primary">Thêm mới</a>
+    <form action="{{ route('admin.suppliers.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        {{-- chống error --}}
         <div class="row">
             <div class="col-md-6">
                 <div class="mb-3 mt-3">
